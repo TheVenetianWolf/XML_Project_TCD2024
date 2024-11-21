@@ -59,7 +59,7 @@ return (: RETURN PERSON DATA COLLECTED FOR GDPR :)
 
  ~:)
 
-<RESULT> 
+<RESULT>
     <PERSON_DATA> 
       {$data} 
     </PERSON_DATA>
