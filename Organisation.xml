@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ORGANISATION [
+<!ELEMENT ORGANISATION (SECTOR*, DEPARTMENT*)>
+
+    <!-- Sector Structure -->
+        <!-- Must have a representative for such an important role but may have more.
+             Multiple Employers may fall under the same Sector and a new Sector may not yet have Employers unionised
+        -->
+    <!ELEMENT SECTOR (NAME, REPRESENTATIVE+, EMPLOYER*)>
+    <!ATTLIST SECTOR ID ID #REQUIRED>
+
+        <!-- Sector Elements -->
+    <!ELEMENT NAME (#PCDATA)>
+    <!ELEMENT REPRESENTATIVE EMPTY>
+    <!ATTLIST REPRESENTATIVE IDREF CDATA #REQUIRED>
+    <!ELEMENT EMPLOYER EMPTY>
+    <!ATTLIST EMPLOYER IDREFS CDATA #REQUIRED>
+
+        <!-- Employer Sector Abbreviations -->
+    <!ENTITY PUBLIC_HEALTH "Public Service, Healthcare">
+    <!ENTITY PUBLIC_PACD "Public Service, Public Administration and Community Division">
+    <!ENTITY PRIVATE_MANUF "Private Sector, Manufacturing">
+    <!ENTITY PRIVATE_SERVICES "Private Sector, Services">
+    <!ENTITY PRIVATE_TEAC "Private Sector, Transport, Energy, Aviation, Construction">
+
+    <!-- Department Structure -->
+        <!-- Each Department must have at least a lead and 0 or more supporting staff and/or contractors
+             Each Department must have a general phone number and email for contacting them
+             Each Department has a description which helps maintain organisational understanding
+        -->
+    <!ELEMENT DEPARTMENT (LEAD, STAFF*, CONTRACTOR*, PHONE, EMAIL, DESCRIPTION)>
+    <!ATTLIST DEPARTMENT NAME CDATA #REQUIRED>
+    <!ATTLIST DEPARTMENT SECTOR IDREF #IMPLIED>
+
+        <!-- Department Elements -->
+    <!ELEMENT LEAD EMPTY>
+    <!ATTLIST LEAD IDREF CDATA #REQUIRED>
+    <!ELEMENT STAFF EMPTY>
+    <!ATTLIST STAFF IDREF CDATA #REQUIRED>
+    <!ELEMENT CONTRACTOR EMPTY>
+    <!ATTLIST CONTRACTOR IDREF CDATA #REQUIRED>
+    <!ELEMENT PHONE (#PCDATA)>
+    <!ELEMENT EMAIL (#PCDATA)>
+    <!ELEMENT DESCRIPTION (#PCDATA)>
+
+]>
+
+<ORGANISATION>
+<!-- ORGANISATION supports the organisation's own sub-divisions allowing for
+     administrative functions and separation of responsibilities according
+     to determined business need.
+     SECTORS will cover EMPLOYERS from the same industry/kind of work
+     DEPARTMENTS will cover the organisation's employment hierarchy
+-->
+    <SECTOR ID="PRIVATE_SERVICES">
+        <NAME>&PRIVATE_SERVICES;</NAME>
+        <REPRESENTATIVE IDREF="P283918"/>
+        <EMPLOYER IDREFS="R514293"/>
+    </SECTOR>
+
+    <SECTOR ID="PUBLIC_PACD">
+        <NAME>&PUBLIC_PACD;</NAME>
+        <REPRESENTATIVE IDREF="P173827"/>
+        <EMPLOYER IDREFS="R283742"/>
+    </SECTOR>
+
+    <SECTOR ID="PRIVATE_TEAC">
+        <NAME>&PUBLIC_PACD;</NAME>
+        <REPRESENTATIVE IDREF="P283918"/>
+    </SECTOR>
+
+    <DEPARTMENT NAME="System Administration">
+        <LEAD IDREF="P278362"/>
+        <PHONE>0873827366</PHONE>
+        <EMAIL>sysadmin@siptu.ie</EMAIL>
+        <DESCRIPTION>System Administration handles all things database, website, and voting</DESCRIPTION>
+    </DEPARTMENT>
+
+    <DEPARTMENT NAME="Marketing">
+        <LEAD IDREF="P728375"/>
+        <STAFF IDREF="P374826"/>
+        <STAFF IDREF="P374826"/>
+        <STAFF IDREF="P374826"/>
+        <STAFF IDREF="P374826"/>
+        <STAFF IDREF="P374826"/>
+        <CONTRACTOR IDREF="P273846"/>
+        <PHONE>0874536183</PHONE>
+        <EMAIL>marketing@siptu.ie</EMAIL>
+        <DESCRIPTION>Marketing handles contacting existing and potential members en masse via any medium</DESCRIPTION>
+    </DEPARTMENT>
+
+</ORGANISATION>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE PEOPLE [
+<!ELEMENT PEOPLE (PERSON*)>
+    <!-- Person Structure -->
+        <!-- MIDDLE NAMES are optional and plural, a PHONE number isn't mandatory but EMAIL for login is
+             a PERSON may hold an ELECTED_OFFICE and they have a CASE_LOAD of how many active cases they're on
+             a PERSON can be involved in 0->infinite EVENTS
+             Salary information is stored for Staff, Contractors, and Members
+             if a PERSON is an EMPLOYEE they will have a DIVISION
+             if requested, a REPRESENTATIVE will be assigned to handle this person's problem due to
+             CASE_LOAD, different REPRESENTATIVES may be assisting the same PERSON at the same time.
+        -->
+    <!ELEMENT PERSON (NAME.FIRST, NAME.MIDDLE*, NAME.LAST, BIRTHDATE, ADDRESS, PHONE?,
+        EMAIL, SALARY?, DIVISION?, ELECTED_OFFICE?, CASE_LOAD?, EVENT*, REPRESENTATIVE*)>
+    <!ATTLIST PERSON ID ID #REQUIRED>
+    <!ATTLIST PERSON RELATIONSHIP (NONE | MEMBER | STAFF | CONTRACTOR) #REQUIRED>
+    <!ATTLIST PERSON CONTACT_PREFERENCE (NONE | EMAIL) #REQUIRED>
+
+    <!-- Person Elements -->
+    <!ELEMENT NAME.FIRST (#PCDATA)>
+    <!ELEMENT NAME.MIDDLE (#PCDATA)>
+    <!ELEMENT NAME.LAST (#PCDATA)>
+    <!ELEMENT BIRTHDATE EMPTY>
+    <!ATTLIST BIRTHDATE IDREF CDATA #REQUIRED>
+    <!ELEMENT ADDRESS EMPTY>
+    <!ATTLIST ADDRESS IDREF CDATA #REQUIRED>
+    <!ELEMENT PHONE (#PCDATA)>
+    <!ELEMENT EMAIL (#PCDATA)>
+    <!ELEMENT SALARY (#PCDATA)>
+    <!ELEMENT DIVISION EMPTY>
+    <!ATTLIST DIVISION IDREF CDATA #REQUIRED>    
+    <!ELEMENT ELECTED_OFFICE EMPTY>
+    <!ATTLIST ELECTED_OFFICE IDREF CDATA #REQUIRED>
+    <!ELEMENT CASE_LOAD (#PCDATA)>
+    <!ELEMENT EVENT EMPTY>
+    <!ATTLIST EVENT IDREF CDATA #REQUIRED>
+    <!ELEMENT REPRESENTATIVE EMPTY>
+    <!ATTLIST REPRESENTATIVE IDREF CDATA #REQUIRED>
+]>
+
+<PEOPLE>
+<!-- PEOPLE is the main portion of the database, storing personal information of any person
+     involved with the organisation. It acts as a central portion of the web of connections
+     between ADDRESS, EVENT, REPRESENTATIVE, and ELECTED_OFFICE amongst other database elements.
+     It enables easy collection of all data belonging to a PERSON for GDPR purposes too.
+-->
+    <!-- Facebook Negotiator && GDPR Request-->
+    <PERSON ID="P387263" RELATIONSHIP="NONE" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>Donald</NAME.FIRST>
+        <NAME.MIDDLE>Aloft</NAME.MIDDLE>
+        <NAME.LAST>Dingle</NAME.LAST>
+        <BIRTHDATE IDREF="E726352"/>
+        <ADDRESS IDREF="A837847"/>
+        <EMAIL>hr-union@fb.com</EMAIL>
+        <EVENT IDREF="E394340"/>
+    </PERSON>
+
+    <!-- Marketing Department Lead -->
+    <PERSON ID="P728375" RELATIONSHIP="STAFF" CONTACT_PREFERENCE="NONE">
+        <NAME.FIRST>Margaret</NAME.FIRST>
+        <NAME.LAST>Adams</NAME.LAST>
+        <BIRTHDATE IDREF="E289374"/>
+        <ADDRESS IDREF="A984728"/>
+        <EMAIL>m.adams@siptu.ie</EMAIL>
+        <SALARY>30000</SALARY>
+        <EVENT IDREF=""/>
+        <EVENT IDREF=""/>
+    </PERSON>
+
+    <!-- Member of SCSS Division -->
+    <PERSON ID="P372837" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>John</NAME.FIRST>
+        <NAME.MIDDLE>Adam</NAME.MIDDLE>
+        <NAME.LAST>Waldron</NAME.LAST>
+        <BIRTHDATE IDREF="E238273"/>
+        <ADDRESS IDREF="A271837"/>
+        <PHONE>0873672837</PHONE>
+        <EMAIL>j.waldron@gmail.com</EMAIL>
+        <SALARY>50000</SALARY>
+        <DIVISION IDREF="DTCDSCSS"/>
+        <EVENT IDREF="E273671"/>
+        <EVENT IDREF="E172883"/>
+        <EVENT IDREF="F293673"/>
+        <EVENT IDREF="F364827"/>
+        <EVENT IDREF="F364791"/>
+        <EVENT IDREF="F278172"/>
+    </PERSON>
+
+    <!-- FB Liaison and Get Salary-->
+    <PERSON ID="P1732937" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>PeeWee</NAME.FIRST>
+        <NAME.LAST>McGee</NAME.LAST>
+        <BIRTHDATE IDREF="E278325"/>
+        <ADDRESS IDREF="A289372"/>
+        <EMAIL>p.mcgee@siptu.ie</EMAIL>
+        <SALARY>34000</SALARY>
+        <ELECTED_OFFICE IDREF="T283728"/>
+        <CASE_LOAD>3</CASE_LOAD>
+        <EVENT IDREF="E272183"/>
+        <EVENT IDREF="E278362"/>
+    </PERSON>
+
+    <!-- Member of SCSS Division && Correct Authority-->
+    <PERSON ID="P123456" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>Michael</NAME.FIRST>
+        <NAME.MIDDLE>Edward</NAME.MIDDLE>
+        <NAME.LAST>Harrison</NAME.LAST>
+        <BIRTHDATE IDREF="E123456"/>
+        <ADDRESS IDREF="A123456"/>
+        <PHONE>0851234567</PHONE>
+        <EMAIL>m.harrison@gmail.com</EMAIL>
+        <SALARY>55000</SALARY>
+        <DIVISION IDREF="DTCDSCSS"/>
+        <EVENT IDREF="E123457"/>
+        <EVENT IDREF="E123458"/>
+        <EVENT IDREF="F123459"/>
+        <EVENT IDREF="F123460"/>
+        <EVENT IDREF="F123461"/>
+        <EVENT IDREF="F123462"/>
+    </PERSON>
+
+    <!-- Representative of TCD Employer && PAID-->
+    <PERSON ID="P123457" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="NONE">
+        <NAME.FIRST>Sarah</NAME.FIRST>
+        <NAME.MIDDLE>Jane</NAME.MIDDLE>
+        <NAME.LAST>Thompson</NAME.LAST>
+        <BIRTHDATE IDREF="E123457"/>
+        <ADDRESS IDREF="A123457"/>
+        <PHONE>0834567890</PHONE>
+        <EMAIL>s.thompson@gmail.com</EMAIL>
+        <SALARY>62000</SALARY>
+        <DIVISION IDREF="DTCDSCSS"/>
+        <ELECTED_OFFICE IDREF="T273683"/>
+        <CASE_LOAD>10</CASE_LOAD>
+        <EVENT IDREF="E123463"/>
+        <EVENT IDREF="E123464"/>
+        <EVENT IDREF="F123465"/>
+        <EVENT IDREF="F123466"/>
+        <EVENT IDREF="F123467"/>
+        <EVENT IDREF="F123468"/>
+    </PERSON>
+
+    <!-- Facebook Representative South && Generate Code && incorrect authority-->
+    <PERSON ID="P123458" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>Emily</NAME.FIRST>
+        <NAME.MIDDLE>Grace</NAME.MIDDLE>
+        <NAME.LAST>Reynolds</NAME.LAST>
+        <BIRTHDATE IDREF="E123458"/>
+        <ADDRESS IDREF="A123458"/>
+        <PHONE>0861239876</PHONE>
+        <EMAIL>e.reynolds@gmail.com</EMAIL>
+        <SALARY>59000</SALARY>
+        <CASE_LOAD>10</CASE_LOAD>
+        <EVENT IDREF="E123469"/>
+        <EVENT IDREF="E123470"/>
+        <EVENT IDREF="F123471"/>
+        <EVENT IDREF="F123472"/>
+        <EVENT IDREF="F123473"/>
+        <EVENT IDREF="F123474"/>
+    </PERSON>
+
+    <!-- Member with unpaid Dues past 8 weeks -->
+    <PERSON ID="P123459" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>James</NAME.FIRST>
+        <NAME.MIDDLE>Alexander</NAME.MIDDLE>
+        <NAME.LAST>Peterson</NAME.LAST>
+        <BIRTHDATE IDREF="E123459"/>
+        <ADDRESS IDREF="A123459"/>
+        <PHONE>0879876543</PHONE>
+        <EMAIL>j.peterson@gmail.com</EMAIL>
+        <SALARY>70000</SALARY>
+        <EVENT IDREF="E123475"/>
+        <EVENT IDREF="E123476"/>
+        <EVENT IDREF="F123477"/>
+        <EVENT IDREF="F123478"/>
+        <EVENT IDREF="F123479"/>
+        <EVENT IDREF="F123480"/>
+    </PERSON>
+    
+    <!-- Facebook South Member Requests Representative -->
+    <PERSON ID="P123460" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="EMAIL">
+        <NAME.FIRST>Anna</NAME.FIRST>
+        <NAME.MIDDLE>Louise</NAME.MIDDLE>
+        <NAME.LAST>Clark</NAME.LAST>
+        <BIRTHDATE IDREF="E123460"/>
+        <ADDRESS IDREF="A123460"/>
+        <PHONE>0897654321</PHONE>
+        <EMAIL>a.clark@gmail.com</EMAIL>
+        <SALARY>61000</SALARY>
+        <DIVISION IDREF="DFBMerrion1"/>
+        <EVENT IDREF="E123481"/>
+        <EVENT IDREF="E123482"/>
+        <EVENT IDREF="F123483"/>
+        <EVENT IDREF="F123484"/>
+        <EVENT IDREF="F123485"/>
+        <EVENT IDREF="F123486"/>
+    </PERSON>
+
+    <!-- Facebook Representative South && Calculate Dues -->
+    <PERSON ID="P123461" RELATIONSHIP="MEMBER" CONTACT_PREFERENCE="NONE">
+        <NAME.FIRST>David</NAME.FIRST>
+        <NAME.MIDDLE>Henry</NAME.MIDDLE>
+        <NAME.LAST>Stevens</NAME.LAST>
+        <BIRTHDATE IDREF="E123461"/>
+        <ADDRESS IDREF="A123461"/>
+        <PHONE>0852345678</PHONE>
+        <EMAIL>d.stevens@gmail.com</EMAIL>
+        <SALARY>74000</SALARY>
+        <CASE_LOAD>3</CASE_LOAD>
+        <EVENT IDREF="E123487"/>
+        <EVENT IDREF="E123488"/>
+        <EVENT IDREF="F123489"/>
+        <EVENT IDREF="F123490"/>
+        <EVENT IDREF="F123491"/>
+        <EVENT IDREF="F123492"/>
+    </PERSON>
+
+</PEOPLE>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE EMPLOYER_DIVISIONS [
+<!-- Throughout - references to people (members, reps, negotiators are to their ID -->
+<!ELEMENT EMPLOYER_DIVISIONS (EMPLOYER+,DIVISION+)>
+
+    <!-- Employer Structure -->
+        <!-- There may or may not be one lead company NEGOTIATOR and multiple union REPRESENTATIVES for the whole
+             company. One person is the designated company liaison and depending on size, REPRESENTATIVES may increase
+             Each EMPLOYER needs a NAME, Company reg ID, Union SECTOR, and at least one DIVISION represented
+        -->
+    <!ELEMENT EMPLOYER (NAME, SECTOR, NEGOTIATOR?, REPRESENTATIVE*)>
+    <!ATTLIST EMPLOYER COMPANY_NO ID #REQUIRED>
+    <!ATTLIST EMPLOYER DIV_NOS IDREFS #REQUIRED>
+
+        <!-- Employer Element -->
+    <!ELEMENT SECTOR EMPTY>
+    <!ATTLIST SECTOR IDREF CDATA #REQUIRED>
+
+    <!-- Division Structure -->
+        <!-- There may or may not be one lead division NEGOTIATOR and multiple union REPRESENTATIVE for the DIVISION
+             One person is the designated division liaison and depending on size, REPRESENTATIVES may increase
+             Each Division needs an ID, ADDRESS, and at least one MEMBER
+             Each Division is employed by one EMPLOYER
+        -->
+    <!ELEMENT DIVISION (NAME, ADDRESS, NEGOTIATOR?, REPRESENTATIVE*, MEMBER+)>
+    <!ATTLIST DIVISION DIV_NO ID #REQUIRED>
+    <!ATTLIST DIVISION COMPANY_NO IDREF #REQUIRED>
+
+        <!-- Division Elements -->
+    <!ELEMENT ADDRESS EMPTY>
+    <!ATTLIST ADDRESS IDREF CDATA #REQUIRED>
+    <!ELEMENT MEMBER EMPTY>
+    <!ATTLIST MEMBER IDREF CDATA #REQUIRED>
+
+        <!-- Shared Elements -->
+    <!ELEMENT NAME (#PCDATA)>
+    <!ELEMENT NEGOTIATOR EMPTY>
+    <!ATTLIST NEGOTIATOR IDREF CDATA #REQUIRED>
+    <!ELEMENT REPRESENTATIVE EMPTY>
+    <!ATTLIST REPRESENTATIVE IDREF CDATA #REQUIRED>
+]>
+
+<EMPLOYER_DIVISIONS>
+<!-- EMPLOYER_DIVISIONS supports the sub-division of member employees subject to their
+     EMPLOYER and DIVISION within that EMPLOYER. Much like Teamster Offices, this allows
+     large employers' employees to maintain local representation and fight for local issues
+     Action can be decided and coordinated on as small as a Divisional up to a Sector level
+-->
+    <EMPLOYER COMPANY_NO="R514293" DIV_NOS="DFBMerrion1 DFBMerrion2 DFBMerrion3">
+        <NAME>Facebook International Operations Ltd.</NAME>
+        <SECTOR IDREF="PRIVATE_SERVICES"/>
+        <NEGOTIATOR IDREF="P387263"/>
+        <REPRESENTATIVE IDREF="P1732937"/>
+    </EMPLOYER>
+
+    <EMPLOYER COMPANY_NO="R283742" DIV_NOS="DTCDSCSS">
+        <NAME>Trinity College STEM Faculty</NAME>
+        <SECTOR IDREF="PUBLIC_PACD"/>
+        <NEGOTIATOR IDREF="P128283"/>
+        <REPRESENTATIVE IDREF="P123457"/>
+    </EMPLOYER>
+
+    <DIVISION COMPANY_NO="R283742" DIV_NO="DTCDSCSS">
+        <!-- This would be linked to Address, and Person XML if not separate documents-->
+        <NAME>TCD SCSS</NAME>
+        <ADDRESS IDREF="A233983"/>
+        <NEGOTIATOR IDREF="P378293"/>
+        <MEMBER IDREF="P123457"/>
+        <MEMBER IDREF="P239423"/>
+        <MEMBER IDREF="P123456"/>
+        <MEMBER IDREF="P291847"/>
+        <MEMBER IDREF="P374837"/>
+    </DIVISION>
+
+    <DIVISION COMPANY_NO="R514293" DIV_NO="DFBMerrion1">
+        <!-- This would be linked to Address, and Person XML if not separate documents-->
+        <NAME>Facebook South</NAME>
+        <ADDRESS IDREF="A183293"/>
+        <NEGOTIATOR IDREF="P378293"/>
+        <REPRESENTATIVE IDREF="P123461"/>
+        <REPRESENTATIVE IDREF="P123458"/>
+        <MEMBER IDREF="P483572"/>
+        <MEMBER IDREF="P237482"/>
+        <MEMBER IDREF="P583372"/>
+        <MEMBER IDREF="P592857"/>
+        <MEMBER IDREF="P453929"/>
+        <MEMBER IDREF="P123460"/>
+        <MEMBER IDREF="P123461"/>
+        <MEMBER IDREF="P123458"/>
+    </DIVISION>
+
+    <DIVISION COMPANY_NO="R514293" DIV_NO="DFBMerrion2">
+        <!-- This would be linked to Address, and Person XML if not separate documents-->
+        <NAME>Facebook North</NAME>
+        <ADDRESS IDREF="A183294"/>
+        <REPRESENTATIVE IDREF="P545839"/>
+        <MEMBER IDREF="P545839"/>
+        <MEMBER IDREF="P533284"/>
+        <MEMBER IDREF="P584372"/>
+        <MEMBER IDREF="P538294"/>
+        <MEMBER IDREF="P538275"/>
+        <MEMBER IDREF="P483895"/>
+    </DIVISION>
+
+    <DIVISION COMPANY_NO="R514293" DIV_NO="DFBMerrion3">
+        <!-- This would be linked to Address, and Person XML if not separate documents-->
+        <NAME>Facebook East</NAME>
+        <ADDRESS IDREF="A183295"/>
+        <NEGOTIATOR IDREF="P372837"/>
+        <REPRESENTATIVE IDREF="P545839"/>
+        <MEMBER IDREF="P237489"/>
+    </DIVISION>
+
+</EMPLOYER_DIVISIONS>
+

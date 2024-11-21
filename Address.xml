@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ADDRESS_BOOK [
+<!ELEMENT ADDRESS_BOOK (ADDRESS*)>
+
+    <!-- Address Structure-->
+        <!-- Each ADDRESS has an ID which can be attributed to a PERSON or DIVISON (if they were in the same document)
+             Each ADDRESS has one or more HOUSE_NO (name, number, business name, etc)
+             AREA and POSTCODE are optional as not all addresses have those
+         -->
+    <!ELEMENT ADDRESS (HOUSE_NO+, STREET, AREA?, CITY, COUNTY, COUNTRY, POSTCODE?)>
+    <!ATTLIST ADDRESS ADDRESS_ID ID #REQUIRED>
+    <!-- Using Linked to identify if an Address is linked to any person / business -->
+    <!ATTLIST ADDRESS LINKED (YES | NO) #REQUIRED>
+
+    <!ELEMENT HOUSE_NO (#PCDATA)>
+    <!ELEMENT STREET (#PCDATA)>
+    <!ELEMENT AREA (#PCDATA)>
+    <!ELEMENT CITY (#PCDATA)>
+    <!ELEMENT COUNTY (#PCDATA)>
+    <!ELEMENT COUNTRY (#PCDATA)>
+    <!ELEMENT POSTCODE (#PCDATA)>
+]>
+
+<ADDRESS_BOOK>
+<!-- ADDRESS_BOOK stores all the Addresses used in the organisation's Database
+     Each Address has an ID which you can use to find someone's or a company division's address
+     The split of multiple levels of locality allow for XQueries based on geographical sub-regions
+-->
+    <ADDRESS ADDRESS_ID="A110232" LINKED="YES">
+        <HOUSE_NO>15</HOUSE_NO>
+        <STREET>Doyle St.</STREET>
+        <AREA>Browley East</AREA>
+        <CITY>Waterford</CITY>
+        <COUNTY>Waterford</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>X91 WP6F</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A209237" LINKED="YES">
+        <HOUSE_NO>Chadwicks Louth</HOUSE_NO>
+        <HOUSE_NO>Old Jail</HOUSE_NO>
+        <STREET>Scarlet St.</STREET>
+        <AREA>Yellowbatter</AREA>
+        <CITY>Drogheda</CITY>
+        <COUNTY>Louth</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>A92 T268</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A378176" LINKED="NO">
+        <HOUSE_NO>2</HOUSE_NO>
+        <HOUSE_NO>Red Chimneys</HOUSE_NO>
+        <STREET>Argyle Ct.</STREET>
+        <CITY>Belfast</CITY>
+        <COUNTY>Antrim</COUNTY>
+        <COUNTRY>United Kingdom</COUNTRY>
+        <POSTCODE>BT13 2DW</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A183293" LINKED="NO">
+        <HOUSE_NO>FaceBook Campus South</HOUSE_NO>
+        <STREET>Merrion Road</STREET>
+        <CITY>Dublin 4</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D04 X2K5</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A183294" LINKED="NO">
+        <HOUSE_NO>FaceBook Campus North</HOUSE_NO>
+        <STREET>Merrion Road</STREET>
+        <CITY>Dublin 4</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D04 X2K5</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A183295" LINKED="NO">
+        <HOUSE_NO>FaceBook Campus East</HOUSE_NO>
+        <STREET>Merrion Road</STREET>
+        <CITY>Dublin 4</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D04 X2K5</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A233983" LINKED="YES">
+        <HOUSE_NO>12</HOUSE_NO>
+        <HOUSE_NO>O'Reilly Institute</HOUSE_NO>
+        <STREET>Westland Row</STREET>
+        <CITY>Dublin 2</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D02 YY50</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100001" LINKED="YES">
+        <HOUSE_NO>21</HOUSE_NO>
+        <STREET>O'Connell Street</STREET>
+        <AREA>Downtown</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D01 F5P2</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100002" LINKED="YES">
+        <HOUSE_NO>7</HOUSE_NO>
+        <STREET>Patrick's Road</STREET>
+        <AREA>Green Hills</AREA>
+        <CITY>Cork</CITY>
+        <COUNTY>Cork</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>T12 DKV4</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100003" LINKED="YES">
+        <HOUSE_NO>42</HOUSE_NO>
+        <STREET>Claddagh Avenue</STREET>
+        <AREA>Seaside View</AREA>
+        <CITY>Galway</CITY>
+        <COUNTY>Galway</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>H91 TX33</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100004" LINKED="YES">
+        <HOUSE_NO>9</HOUSE_NO>
+        <STREET>Ballyfermot Road</STREET>
+        <AREA>West End</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D10 V3R6</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A837847" LINKED="YES">
+        <HOUSE_NO>33</HOUSE_NO>
+        <STREET>Kildare Street</STREET>
+        <AREA>City Center</AREA>
+        <CITY>Kildare</CITY>
+        <COUNTY>Kildare</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>R14 K7W3</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100006" LINKED="YES">
+        <HOUSE_NO>18</HOUSE_NO>
+        <STREET>Shannon Crescent</STREET>
+        <AREA>Lakeside</AREA>
+        <CITY>Limerick</CITY>
+        <COUNTY>Limerick</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>V94 YY7K</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100007" LINKED="YES">
+        <HOUSE_NO>56</HOUSE_NO>
+        <STREET>Rosewood Drive</STREET>
+        <AREA>Park Hill</AREA>
+        <CITY>Waterford</CITY>
+        <COUNTY>Waterford</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>X91 ZB8N</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100008" LINKED="YES">
+        <HOUSE_NO>12</HOUSE_NO>
+        <STREET>Main Street</STREET>
+        <AREA>Old Town</AREA>
+        <CITY>Kilkenny</CITY>
+        <COUNTY>Kilkenny</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>R95 DX23</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100009" LINKED="YES">
+        <HOUSE_NO>81</HOUSE_NO>
+        <STREET>Phoenix Drive</STREET>
+        <AREA>Rathmines</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D06 T8P4</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100010" LINKED="YES">
+        <HOUSE_NO>4</HOUSE_NO>
+        <STREET>Abbey Street</STREET>
+        <AREA>East Village</AREA>
+        <CITY>Wexford</CITY>
+        <COUNTY>Wexford</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>Y35 WV19</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100011" LINKED="YES">
+        <HOUSE_NO>25</HOUSE_NO>
+        <STREET>Harbour Road</STREET>
+        <AREA>Coastal</AREA>
+        <CITY>Drogheda</CITY>
+        <COUNTY>Louth</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>A92 H8P7</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100012" LINKED="YES">
+        <HOUSE_NO>60</HOUSE_NO>
+        <STREET>Blackrock Lane</STREET>
+        <AREA>Granville</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D03 YZ59</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100013" LINKED="YES">
+        <HOUSE_NO>17</HOUSE_NO>
+        <STREET>Cahir Road</STREET>
+        <AREA>Haven's Edge</AREA>
+        <CITY>Tipperary</CITY>
+        <COUNTY>Tipperary</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>E34 ZX82</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100014" LINKED="YES">
+        <HOUSE_NO>34</HOUSE_NO>
+        <STREET>Tralee Terrace</STREET>
+        <AREA>Beachfront</AREA>
+        <CITY>Kerry</CITY>
+        <COUNTY>Kerry</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>V92 RH75</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100015" LINKED="YES">
+        <HOUSE_NO>29</HOUSE_NO>
+        <STREET>College Green</STREET>
+        <AREA>Campus Park</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D02 YZ12</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100016" LINKED="YES">
+        <HOUSE_NO>39</HOUSE_NO>
+        <STREET>Elm Grove</STREET>
+        <AREA>South Valley</AREA>
+        <CITY>Naas</CITY>
+        <COUNTY>Kildare</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>W91 F2P6</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100017" LINKED="YES">
+        <HOUSE_NO>8</HOUSE_NO>
+        <STREET>Ballycastle Road</STREET>
+        <AREA>Hillside</AREA>
+        <CITY>Antrim</CITY>
+        <COUNTY>Antrim</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>BT44 8DF</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100018" LINKED="YES">
+        <HOUSE_NO>77</HOUSE_NO>
+        <STREET>Church View</STREET>
+        <AREA>Central</AREA>
+        <CITY>Arklow</CITY>
+        <COUNTY>Wicklow</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>A67 W9H3</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100019" LINKED="YES">
+        <HOUSE_NO>50</HOUSE_NO>
+        <STREET>Fergus Way</STREET>
+        <AREA>Riverfront</AREA>
+        <CITY>Clare</CITY>
+        <COUNTY>Clare</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>V95 PK79</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100020" LINKED="YES">
+        <HOUSE_NO>6</HOUSE_NO>
+        <STREET>Avondale Court</STREET>
+        <AREA>Forest Hill</AREA>
+        <CITY>Bray</CITY>
+        <COUNTY>Wicklow</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>A98 HD7P</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100021" LINKED="YES">
+        <HOUSE_NO>19</HOUSE_NO>
+        <STREET>Market Square</STREET>
+        <AREA>City Market</AREA>
+        <CITY>Sligo</CITY>
+        <COUNTY>Sligo</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>F91 VP73</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100022" LINKED="YES">
+        <HOUSE_NO>14</HOUSE_NO>
+        <STREET>Mayo Street</STREET>
+        <AREA>North Bridge</AREA>
+        <CITY>Castlebar</CITY>
+        <COUNTY>Mayo</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>F23 FX52</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100023" LINKED="YES">
+        <HOUSE_NO>31</HOUSE_NO>
+        <STREET>Connemara Drive</STREET>
+        <AREA>Lakefront</AREA>
+        <CITY>Galway</CITY>
+        <COUNTY>Galway</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>H91 DX76</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100024" LINKED="YES">
+        <HOUSE_NO>85</HOUSE_NO>
+        <STREET>Old Mill Road</STREET>
+        <AREA>Millstone</AREA>
+        <CITY>Dublin</CITY>
+        <COUNTY>Dublin</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>D11 ZR58</POSTCODE>
+    </ADDRESS>
+
+    <ADDRESS ADDRESS_ID="A100025" LINKED="YES">
+        <HOUSE_NO>67</HOUSE_NO>
+        <STREET>Parkwood Avenue</STREET>
+        <AREA>Fairways</AREA>
+        <CITY>Cork</CITY>
+        <COUNTY>Cork</COUNTY>
+        <COUNTRY>Ireland</COUNTRY>
+        <POSTCODE>T12 P5H4</POSTCODE>
+    </ADDRESS>
+
+</ADDRESS_BOOK>

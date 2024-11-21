@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ELECTED_OFFICES [
+<!ELEMENT ELECTED_OFFICES (ELECTED_OFFICE*)>
+        <!-- You can represent one or more SECTORS, EMPLOYERS or DIVISIONS but due to
+             potential conflicts of interest you can't represent an EMPLOYER and DIVISION etc.
+        -->
+    <!ELEMENT ELECTED_OFFICE (PERSON,(SECTOR+ | EMPLOYER+ | DIVISION+),START,FINISH)>
+    <!ATTLIST ELECTED_OFFICE TITLE CDATA #REQUIRED>
+    <!ATTLIST ELECTED_OFFICE ID ID #REQUIRED>
+        <!-- AUTHORITY Dictates Database/Action permissions granted to the position
+             these range from contacting everyone in DIVISION or EMPLOYER to administrating
+             a DEPARTMENT within the ORGANISATION or the members or the whole ORGANISATION
+        -->
+    <!ATTLIST ELECTED_OFFICE AUTHORITY (NONE | CONTACT_DIV | ADMIN_DEPT | CONTACT_EMPL |
+            ADMIN_MEMBER | ADMIN_ORG) #REQUIRED>
+
+        <!-- Elected Office Elements -->
+    <!ELEMENT PERSON EMPTY>
+    <!ATTLIST PERSON IDREF CDATA #REQUIRED>
+    <!ELEMENT SECTOR EMPTY>
+    <!ATTLIST SECTOR IDREF CDATA #REQUIRED>
+    <!ELEMENT EMPLOYER EMPTY>
+    <!ATTLIST EMPLOYER IDREF CDATA #REQUIRED>
+    <!ELEMENT DIVISION EMPTY>
+    <!ATTLIST DIVISION IDREF CDATA #REQUIRED>
+    <!ELEMENT START EMPTY>
+    <!ATTLIST START IDREF CDATA #REQUIRED>
+    <!ELEMENT FINISH EMPTY>
+    <!ATTLIST FINISH IDREF CDATA #REQUIRED>
+]>
+
+<ELECTED_OFFICES>
+<!-- ELECTED_OFFICES supports the temporary/revolving roles held within the organisation
+     It allows for Elections to be automatically called at appropriate times based off FINISH
+     date and for handover periods by overlapping START date before FINISH.
+     These can also be linked to appropriate database/website permissions
+-->
+    <ELECTED_OFFICE TITLE="Facebook Liaison" ID="T283728" AUTHORITY="CONTACT_EMPL">
+        <PERSON IDREF="P1732937"/>
+        <EMPLOYER IDREF="R514293"/>
+        <START IDREF="E372849"/>
+        <FINISH IDREF="E374330"/>
+    </ELECTED_OFFICE>
+
+    <ELECTED_OFFICE TITLE="Facebook South Division Representative" ID="T273826" AUTHORITY="CONTACT_DIV">
+        <PERSON IDREF="P123458"/>
+        <DIVISION IDREF="DFBMerrion2"/>
+        <DIVISION IDREF="DFBMerrion3"/>
+        <START IDREF="E372849"/>
+        <FINISH IDREF="E374330"/>
+    </ELECTED_OFFICE>
+
+    <ELECTED_OFFICE TITLE="TCD Representative" ID="T273683" AUTHORITY="CONTACT_EMPL">
+        <PERSON IDREF="P123457"/>
+        <DIVISION IDREF="DTCDSCSS"/>
+        <START IDREF="E374330"/>
+        <FINISH IDREF="E374331"/>
+    </ELECTED_OFFICE>
+
+</ELECTED_OFFICES>

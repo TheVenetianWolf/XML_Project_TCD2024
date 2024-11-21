@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE CALENDAR [
+<!ELEMENT CALENDAR (EVENT*)>
+
+    <!-- EVENT Structure -->
+        <!-- EVENTS are categorised by ID (E/P) as either Meeting/Gathering or Payment Event
+             EVENTS have INFO text (either Event name or Payment amount depending on categorisation)
+             There can be 0->infinite ATTENDEES which will depend on invitations and acceptances
+             Whether the EVENT is visible to non-attendees is determined by VISIBILITY for privacy
+        -->
+
+    <!ELEMENT EVENT (INFO, ((DATE.DAY, DATE.MONTH, DATE.YEAR) |
+            (DATE.DAY, DATE.MONTH, DATE.YEAR , TIME.HOURS, TIME.MINUTES, TIME.TIMEZONE,(
+            (DURATION.HOURS , DURATION.MINUTES?) | DURATION.MINUTES))), ATTENDEES*)>
+    <!ATTLIST EVENT EVENT_ID CDATA #REQUIRED>
+    <!ATTLIST EVENT VISIBILITY (OPEN | INVITE) #REQUIRED>
+    <!ATTLIST EVENT COMPLETION (DUE | PAID | FUTURE | NOW | FINISHED) #REQUIRED>
+    <!ELEMENT INFO (#PCDATA)>
+
+    <!-- Event Elements -->
+        <!-- All events have a DATE. They can also have a TIME. If they have a TIME they also have
+             a DURATION of either HOURS with optional MINUTES, or just MINUTES
+             This structure avoids e.g no TIME but a DURATION and ensures user clarity
+        -->
+        <!-- Date Structure - Each Date will have a Day, Month, and Year for ease of international parsing -->
+    <!ELEMENT DATE.DAY (#PCDATA)>
+    <!ELEMENT DATE.MONTH (#PCDATA)>
+    <!ELEMENT DATE.YEAR (#PCDATA)>
+
+        <!-- Time Structure - Each Time will have a Hour, Minute, and Timezone for ease of international parsing -->
+    <!ELEMENT TIME.HOURS (#PCDATA)>
+    <!ELEMENT TIME.MINUTES (#PCDATA)>
+    <!ELEMENT TIME.TIMEZONE (#PCDATA)>
+
+        <!-- Duration Structure - Each Duration will have an Hour and Minute for ease of parsing -->
+    <!ELEMENT DURATION.HOURS (#PCDATA)>
+    <!ELEMENT DURATION.MINUTES (#PCDATA)>
+
+    <!ELEMENT ATTENDEES EMPTY>
+    <!ATTLIST ATTENDEES IDREF CDATA #REQUIRED>
+]>
+
+<CALENDAR>
+<!-- CALENDAR supports two functions: Event scheduling such as meetings, and Payment tracking
+     Using the Completion status Paid or Due will mark the Event as Payment related and allow
+     determining member due payment status with amount in INFO section. Thise Event IDs begin with P
+     Using the Completion status Fin Now Later will treat it as an event with name in INFO section Event ID E
+-->
+    <EVENT EVENT_ID="E815815" VISIBILITY="OPEN" COMPLETION="FUTURE">
+        <INFO>Christmas Email</INFO>
+        <DATE.DAY>25</DATE.DAY>
+        <DATE.MONTH>12</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+        <TIME.HOURS>00</TIME.HOURS>
+        <TIME.MINUTES>01</TIME.MINUTES>
+        <TIME.TIMEZONE>00</TIME.TIMEZONE>
+        <DURATION.HOURS>24</DURATION.HOURS>
+    </EVENT>
+
+    <EVENT EVENT_ID="E827361" VISIBILITY="OPEN" COMPLETION="FINISHED">
+        <INFO>Prank Meeting</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>04</DATE.MONTH>
+        <DATE.YEAR>2020</DATE.YEAR>
+        <TIME.HOURS>15</TIME.HOURS>
+        <TIME.MINUTES>30</TIME.MINUTES>
+        <TIME.TIMEZONE>01</TIME.TIMEZONE>
+        <DURATION.HOURS>02</DURATION.HOURS>
+        <DURATION.MINUTES>00</DURATION.MINUTES>
+        <ATTENDEES IDREF="P183729"/>
+        <ATTENDEES IDREF="P203834"/>
+        <ATTENDEES IDREF="P283927"/>
+        <ATTENDEES IDREF="P267381"/>
+        <ATTENDEES IDREF="P193727"/>
+    </EVENT>
+
+    <EVENT EVENT_ID="F028392" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>50</INFO>
+        <DATE.DAY>08</DATE.DAY>
+        <DATE.MONTH>11</DATE.MONTH>
+        <DATE.YEAR>1990</DATE.YEAR>
+        <ATTENDEES IDREF="P273891"/>
+    </EVENT>
+
+    <EVENT EVENT_ID="E726352" VISIBILITY="INVITE" COMPLETION="FINISHED">
+        <INFO>Birthday</INFO>
+        <DATE.DAY>08</DATE.DAY>
+        <DATE.MONTH>11</DATE.MONTH>
+        <DATE.YEAR>1990</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="E372849" VISIBILITY="INVITE" COMPLETION="FINISHED">
+        <INFO>Facebook Liaison Election 2024</INFO>
+        <DATE.DAY>21</DATE.DAY>
+        <DATE.MONTH>11</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="E374330" VISIBILITY="INVITE" COMPLETION="FUTURE">
+        <INFO>Facebook Liaison Handover</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>12</DATE.MONTH>
+        <DATE.YEAR>2025</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="E394340" VISIBILITY="INVITE" COMPLETION="FINISHED">
+        <INFO>SCSS Rep Handover 2024</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>04</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+        <ATTENDEES IDREF="P387263"/>
+    </EVENT>
+
+    <EVENT EVENT_ID="E374331" VISIBILITY="INVITE" COMPLETION="FUTURE">
+        <INFO>SCSS Rep Handover 2025</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>04</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123459" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>41.41</INFO>
+        <DATE.DAY>20</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2007</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123460" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>52.66</INFO>
+        <DATE.DAY>11</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2009</DATE.YEAR>
+        <ATTENDEES IDREF="P123456"/>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123461" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>20.76</INFO>
+        <DATE.DAY>11</DATE.DAY>
+        <DATE.MONTH>05</DATE.MONTH>
+        <DATE.YEAR>1999</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123462" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>16.74</INFO>
+        <DATE.DAY>30</DATE.DAY>
+        <DATE.MONTH>10</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123465" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>19.93</INFO>
+        <DATE.DAY>08</DATE.DAY>
+        <DATE.MONTH>05</DATE.MONTH>
+        <DATE.YEAR>2002</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123466" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>18.9</INFO>
+        <DATE.DAY>06</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2015</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123467" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>20.77</INFO>
+        <DATE.DAY>20</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2013</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123468" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>51.39</INFO>
+        <DATE.DAY>30</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2016</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123471" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>9.92</INFO>
+        <DATE.DAY>06</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2022</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123472" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>10.48</INFO>
+        <DATE.DAY>15</DATE.DAY>
+        <DATE.MONTH>08</DATE.MONTH>
+        <DATE.YEAR>2021</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123473" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>8.25</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>10</DATE.MONTH>
+        <DATE.YEAR>2003</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123474" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>44.77</INFO>
+        <DATE.DAY>14</DATE.DAY>
+        <DATE.MONTH>05</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123477" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>29.76</INFO>
+        <DATE.DAY>24</DATE.DAY>
+        <DATE.MONTH>12</DATE.MONTH>
+        <DATE.YEAR>2018</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123478" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>19.46</INFO>
+        <DATE.DAY>01</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>1995</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123479" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>11.72</INFO>
+        <DATE.DAY>03</DATE.DAY>
+        <DATE.MONTH>04</DATE.MONTH>
+        <DATE.YEAR>2018</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123480" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>36.21</INFO>
+        <DATE.DAY>06</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2014</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123483" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>48.73</INFO>
+        <DATE.DAY>15</DATE.DAY>
+        <DATE.MONTH>02</DATE.MONTH>
+        <DATE.YEAR>1999</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123484" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>22.27</INFO>
+        <DATE.DAY>03</DATE.DAY>
+        <DATE.MONTH>10</DATE.MONTH>
+        <DATE.YEAR>2017</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123485" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>16.89</INFO>
+        <DATE.DAY>21</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2020</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123486" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>35.36</INFO>
+        <DATE.DAY>22</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2004</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123489" VISIBILITY="INVITE" COMPLETION="PAID">
+        <INFO>49.8</INFO>
+        <DATE.DAY>22</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2015</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123490" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>39.26</INFO>
+        <DATE.DAY>19</DATE.DAY>
+        <DATE.MONTH>07</DATE.MONTH>
+        <DATE.YEAR>2026</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123491" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>15.94</INFO>
+        <DATE.DAY>18</DATE.DAY>
+        <DATE.MONTH>08</DATE.MONTH>
+        <DATE.YEAR>2025</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F123492" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>32.15</INFO>
+        <DATE.DAY>25</DATE.DAY>
+        <DATE.MONTH>01</DATE.MONTH>
+        <DATE.YEAR>2025</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F273671" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>47.85</INFO>
+        <DATE.DAY>03</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2027</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F278172" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>50.66</INFO>
+        <DATE.DAY>30</DATE.DAY>
+        <DATE.MONTH>10</DATE.MONTH>
+        <DATE.YEAR>2024</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F364791" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>6.86</INFO>
+        <DATE.DAY>20</DATE.DAY>
+        <DATE.MONTH>03</DATE.MONTH>
+        <DATE.YEAR>2025</DATE.YEAR>
+    </EVENT>
+
+    <EVENT EVENT_ID="F364827" VISIBILITY="INVITE" COMPLETION="DUE">
+        <INFO>34.6</INFO>
+        <DATE.DAY>13</DATE.DAY>
+        <DATE.MONTH>05</DATE.MONTH>
+        <DATE.YEAR>2026</DATE.YEAR>
+    </EVENT>
+
+</CALENDAR>
