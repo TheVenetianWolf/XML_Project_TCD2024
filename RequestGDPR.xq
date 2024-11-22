@@ -1,72 +1,44 @@
-(:~LUPUS WAS HERE 
-     _                  _
-    | '-.            .-' |
-    | -. '..\\,.//,.' .- |
-    |   \  \\\||///  /   |
-   /|    )M\/%%%%/\/(  . |\
-  (/\  MM\/%/\||/%\\/MM  /\)
-  (//M   \%\\\%%//%//   M\\)
-(// M________ /\ ________M \\)
- (// M\ \(',)|  |(',)/ /M \\) \\\\  
-  (\\ M\.  /,\\//,\  ./M //)
-    / MMmm( \\||// )mmMM \  \\
-     // MMM\\\||///MMM \\ \\
-      \//''\)/||\(/''\\/ \\
-      mrf\\( \oo/ )\\\/\
-           \'-..-'\/\\
-              \\/ \\
-
-~:)
-
-(: LOCAL FUNCTION TO GET PERSON DATA from DB :)
+(: PERSON DATA :)
 declare function local:GetPerson($PERSON_ID as xs:string) 
 {
   let $person := doc("XML_Project/Person.xml")/PEOPLE/PERSON[contains(string(@ID), $PERSON_ID)]  
   return $person
 };
 
-(: LOCAL FUNCTION TO GET ADDRESS DATA from DB :)
+(: ADDRESS DATA :)
 declare function local:GetAddress($ADDRESS_ID as xs:string) 
 {
   let $address := doc("XML_Project/Address.xml")/ADDRESS_BOOK/ADDRESS[contains(string(@ADDRESS_ID), $ADDRESS_ID)]  
   return $address
 };
 
-(: LOCAL FUNCTION TO GET EVENT DATA from DB :)
-declare function local:GetEvents($EVENT_ID as xs:string) 
+(: EVENT DATA :)
+declare function local:GetEvents($EVENT_IDS as xs:string+) 
 {
-  let $event := doc("XML_Project/Calendar.xml")/CALENDAR/EVENT[contains(string(@EVENT_ID), $EVENT_ID)]  
+  for $event_id in $EVENT_IDS
+  for $event in doc("XML_Project/Calendar.xml")/CALENDAR/EVENT
+    where contains($event/@EVENT_ID,$event_id)  
   return $event
 };
 
-(: Request Data from Everywhere in the database:)
-let $PERSON_ID := "P387263" (: PERSON WE WANT TO COLLECT GDPR DATA :)
-
-(: CREATE VARIABLES FOR GDPR DATA AND CALL THE PREVIOUS LOCAL FUNCTIONS TO GET PERSON DATA :)
+(: Request Data from Everywhere:)
+let $PERSON_ID := "P123461"
 let $data := local:GetPerson($PERSON_ID)
 let $address := local:GetAddress($data/ADDRESS/string(@IDREF))
 let $events := local:GetEvents($data/EVENT/string(@IDREF))
 
-(: Retrieve and Combine Data from Everywhere in the database :)
-
-return (: RETURN PERSON DATA COLLECTED FOR GDPR :)
-(:~
-  XML Tree Structure:
-
-  <RESULT> => ROOT NODE
-  <PERSON_DATA>, <ADDRESS_DATA>, <EVENTS> => CHILD NODES
-  $data, $address, $events => Variables with the query results to return.
-
- ~:)
-
+(: Combine Data from Everywhere :)
+return
 <RESULT>
-    <PERSON_DATA> 
-      {$data} 
+    <PERSON_DATA>
+      {$data}
     </PERSON_DATA>
-    <ADDRESS_DATA> 
-      {$address} 
+    space
+    <ADDRESS_DATA>
+      {$address}
     </ADDRESS_DATA>
-    <EVENTS> 
-      {$events} 
+    space
+    <EVENTS>
+      {$events}
     </EVENTS>
-</RESULT>
+  </RESULT>

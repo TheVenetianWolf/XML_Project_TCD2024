@@ -64,8 +64,6 @@
         <ADDRESS IDREF="A984728"/>
         <EMAIL>m.adams@siptu.ie</EMAIL>
         <SALARY>30000</SALARY>
-        <EVENT IDREF=""/>
-        <EVENT IDREF=""/>
     </PERSON>
 
     <!-- Member of SCSS Division -->
